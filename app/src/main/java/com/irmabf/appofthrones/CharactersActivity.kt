@@ -1,5 +1,6 @@
 package com.irmabf.appofthrones
 
+import android.content.Intent
 import android.os.Bundle
 import android.os.PersistableBundle
 import android.support.v7.app.AppCompatActivity
@@ -14,7 +15,9 @@ class CharactersActivity: AppCompatActivity() {
         val button: Button = findViewById(R.id.button_character)
 
         button.setOnClickListener {
-            Log.d("Characters Activity", "Click is working")
+            //Log.d("Characters Activity", "Click is working")
+            val intent: Intent = Intent(this, DetailActivity::class.java)
+            startActivity(intent)
         }
     }
 }
