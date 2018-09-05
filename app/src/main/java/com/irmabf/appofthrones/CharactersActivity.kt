@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.os.PersistableBundle
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
+import android.view.View
 import android.widget.Button
 
 class CharactersActivity: AppCompatActivity() {
@@ -13,11 +14,9 @@ class CharactersActivity: AppCompatActivity() {
         setContentView(R.layout.activity_characters)
 
         val button: Button = findViewById(R.id.button_character)
-
-        button.setOnClickListener {
-            //Log.d("Characters Activity", "Click is working")
-            val intent: Intent = Intent(this, DetailActivity::class.java)
-            startActivity(intent)
-        }
+    }
+    fun showDetails(button: View) {
+        val intent: Intent = Intent(this, DetailActivity::class.java)
+        startActivity(intent)
     }
 }
