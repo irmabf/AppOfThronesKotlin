@@ -3,13 +3,15 @@ package com.irmabf.appofthrones
 object CharactersRepo {
     // Create the variable characters and initialize as an empty mutable list of characters
     var characters: MutableList<Character> = mutableListOf()
+
     //Function which returns a list of dummy characters
     private fun dummyCharacters(): MutableList<Character> {
-        //1. Create the variable dummies as an empty mutable list
-        val dummies: MutableList<Character> = mutableListOf()
-        //2. Iterate 10 times and in each one save a dummy character
-        for (index in 1..10) {
-            val character : Character = Character(
+        //1. Create the variable dummies as mutable list and a range
+        // as an array of integers from 1 to 10
+        //.2 We map through each element inside the range applying a lambda function which
+        //receives and index variable - the int in the range -, and returns a Character
+        val dummies: MutableList<Character> = (1..10).map { index ->
+            Character(
                     name = "Personaje $index",
                     title = "Titulo $index",
                     born = "Nació en $index",
@@ -24,10 +26,11 @@ object CharactersRepo {
                             words = "Lema $index"
                     )
             )
-            //3. Add each index to de dummies mutableList
-            dummies.add(character)
-        }
+        }.toMutableList()
+
         //4. Return dummies
-        return  dummies
+        return dummies
     }
+
+
 }
