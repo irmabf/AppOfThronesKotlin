@@ -3,7 +3,11 @@ package com.irmabf.appofthrones
 object CharactersRepo {
     // Create the variable characters and initialize as an empty mutable list of characters
     val characters: MutableList<Character> = mutableListOf()
-
+        get() {
+            if (field.isEmpty())
+                field.addAll(dummyCharacters())
+            return  field
+        }
     //Function which returns a list of dummy characters
     private fun dummyCharacters(): MutableList<Character> {
         return (1..10).map {
