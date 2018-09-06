@@ -2,7 +2,7 @@ package com.irmabf.appofthrones
 
 object CharactersRepo {
     // Create the variable characters and initialize as an empty mutable list of characters
-    var characters: MutableList<Character> = mutableListOf()
+    val characters: MutableList<Character> = mutableListOf()
 
     //Function which returns a list of dummy characters
     private fun dummyCharacters(): MutableList<Character> {
@@ -12,7 +12,7 @@ object CharactersRepo {
     }
 
     private  fun intToCharacter(int: Int): Character {
-        Character(
+        return Character(
                 name = "Personaje $int",
                 title = "Titulo $int",
                 born = "Nació en $int",
