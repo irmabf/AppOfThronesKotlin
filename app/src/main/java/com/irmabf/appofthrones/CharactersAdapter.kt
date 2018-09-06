@@ -4,13 +4,31 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 
 class CharactersAdapter: RecyclerView.Adapter<CharactersAdapter.CharacterViewHolder>() {
 
     val items = mutableListOf<Character>()
+
+    //📌📌 We will call this setCharacters method inside onCreate, in the CharactersActivity
+    fun setCharacters(characters: MutableList<Character>){
+        items.clear()
+        items.addAll(characters)
+        //Adapter notificartion
+        notifyDataSetChanged()
+    }
     //A inner class is a nested class
     inner  class  CharacterViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
         var character: Character? = null
+        //When we set the characters value as an item we also set all the info inside the view
+        //We do that with a custom setter
+        set(value) {
+            //Set the text of the textView
+            itemView.findViewById<TextView>(R.id.label_name).text = value?.name
+            //Set the field to the value that we are setting, !!remember field is a wildcard that kotlin setters provides us
+            //and we CANNOT use another name
+            field = value
+        }
     }
     //We can access to a context from any class that inherits from View, this inner class inherits from View,
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CharacterViewHolder {

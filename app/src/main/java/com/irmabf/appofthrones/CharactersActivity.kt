@@ -9,14 +9,22 @@ import android.support.v7.widget.RecyclerView
 import android.util.Log
 import android.view.View
 import android.widget.Button
+import com.irmabf.appofthrones.CharactersRepo.characters
 
 class CharactersActivity: AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_characters)
 
-       val list: RecyclerView = findViewById(R.id.list)
+        //Instantiate our custom adapter CharactersAdapted needed for the RecyclerView
+        val adapter: CharactersAdapter = CharactersAdapter()
+        //Call the adapter setCharacters property
+        adapter.setCharacters(characters)
+
+        val list: RecyclerView = findViewById(R.id.list)
         list.layoutManager = LinearLayoutManager(this)
+        //Set the list adapter to adapter
+        list.adapter = adapter
 
 
     }
