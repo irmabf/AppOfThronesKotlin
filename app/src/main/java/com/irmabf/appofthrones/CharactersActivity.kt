@@ -12,22 +12,30 @@ import android.widget.Button
 import com.irmabf.appofthrones.CharactersRepo.characters
 
 class CharactersActivity: AppCompatActivity() {
+
+    val list: RecyclerView by lazy {
+        val list: RecyclerView = findViewById(R.id.list)
+        list.layoutManager = LinearLayoutManager(this)
+        //this code returns the list as lazy initializers don´t use returns
+        list
+    }
+
+    val adapter: CharactersAdapter by lazy {
+        val adapter = CharactersAdapter { item, position ->
+            //What happens if  the item is clicked
+            showDetails()
+        }
+        adapter
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_characters)
-
-        //Instantiate our custom adapter CharactersAdapted needed for the RecyclerView
-        val adapter: CharactersAdapter = CharactersAdapter() { item, position ->
-                //What happens if  the item is clicked
-
-            showDetails()
-        }
-        //Call the adapter setCharacters property
+        //Get the characters
+        val characters: MutableList<Character> = CharactersRepo.characters
+        //Call the adapter setCharacters property, this set the characters to the adapter
         adapter.setCharacters(characters)
-
-        val list: RecyclerView = findViewById(R.id.list)
-        list.layoutManager = LinearLayoutManager(this)
-        //Set the list adapter to adapter
+        //Now we set the adapter with the characters to the list
         list.adapter = adapter
     }
     fun showDetails() {
