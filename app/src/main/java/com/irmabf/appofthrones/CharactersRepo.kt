@@ -11,26 +11,28 @@ object CharactersRepo {
         //.2 We map through each element inside the range applying a lambda function which
         //receives and index variable - the int in the range -, and returns a Character
         val dummies: MutableList<Character> = (1..10).map { index ->
-            Character(
-                    name = "Personaje $index",
-                    title = "Titulo $index",
-                    born = "Nació en $index",
-                    actor = "Actor $index",
-                    quote = "Frase $index",
-                    father = "Padre $index",
-                    mother = "Madre $index",
-                    spouse = "Espos@ $index",
-                    house = House(
-                            name = "Casa $index",
-                            region = "Region $index",
-                            words = "Lema $index"
-                    )
-            )
+            intToCharacter(index)
         }.toMutableList()
 
         //4. Return dummies
         return dummies
     }
 
-
+    private  fun intToCharacter(int: Int): Character {
+        Character(
+                name = "Personaje $int",
+                title = "Titulo $int",
+                born = "Nació en $int",
+                actor = "Actor $int",
+                quote = "Frase $int",
+                father = "Padre $int",
+                mother = "Madre $int",
+                spouse = "Espos@ $int",
+                house = House(
+                        name = "Casa $int",
+                        region = "Region $int",
+                        words = "Lema $int"
+                )
+        )
+    }
 }
