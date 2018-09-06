@@ -41,8 +41,8 @@ class CharactersAdapter: RecyclerView.Adapter<CharactersAdapter.CharacterViewHol
                 field = value
             }
         init {
-            character?.let {
-                itemView.setOnClickListener{
+            itemView.setOnClickListener{
+                character?.let {
                     itemClickListener?.invoke(character as Character, adapterPosition)
                 }
             }

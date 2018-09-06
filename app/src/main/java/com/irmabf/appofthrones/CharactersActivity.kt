@@ -17,7 +17,11 @@ class CharactersActivity: AppCompatActivity() {
         setContentView(R.layout.activity_characters)
 
         //Instantiate our custom adapter CharactersAdapted needed for the RecyclerView
-        val adapter: CharactersAdapter = CharactersAdapter()
+        val adapter: CharactersAdapter = CharactersAdapter() { item, position ->
+                //What happens if  the item is clicked
+
+            showDetails()
+        }
         //Call the adapter setCharacters property
         adapter.setCharacters(characters)
 
@@ -26,7 +30,7 @@ class CharactersActivity: AppCompatActivity() {
         //Set the list adapter to adapter
         list.adapter = adapter
     }
-    fun showDetails(button: View) {
+    fun showDetails() {
         val intent: Intent = Intent(this, DetailActivity::class.java)
         startActivity(intent)
     }
