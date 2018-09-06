@@ -12,6 +12,10 @@ class CharactersActivity: AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_characters)
+
+        //Get characters from CharactersRepo
+        val characters: MutableList<Character> = CharactersRepo.characters
+        Log.i("CharactersActivity", "There are ${characters.size} characters")
     }
     fun showDetails(button: View) {
         val intent: Intent = Intent(this, DetailActivity::class.java)

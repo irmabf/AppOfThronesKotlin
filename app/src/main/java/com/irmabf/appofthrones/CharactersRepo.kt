@@ -14,7 +14,6 @@ object CharactersRepo {
             intToCharacter(it)
         }.toMutableList()
     }
-
     private  fun intToCharacter(int: Int): Character {
         return Character(
                 name = "Personaje $int",
