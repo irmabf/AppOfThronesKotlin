@@ -25,8 +25,6 @@ class CharactersActivity: AppCompatActivity() {
         list.layoutManager = LinearLayoutManager(this)
         //Set the list adapter to adapter
         list.adapter = adapter
-
-
     }
     fun showDetails(button: View) {
         val intent: Intent = Intent(this, DetailActivity::class.java)
